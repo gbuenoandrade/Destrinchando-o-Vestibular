@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="13B42" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Exam" representedClassName="Exam" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="tests" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Test" inverseName="examIBelong" inverseEntity="Test" syncable="YES"/>
+    </entity>
+    <entity name="Question" representedClassName="Question" syncable="YES">
+        <attribute name="imagePosition" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="number" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="resolution" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="topicsIBelong" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Topic" inverseName="questionsWithin" inverseEntity="Topic" syncable="YES"/>
+    </entity>
+    <entity name="Subject" representedClassName="Subject" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="testIBelong" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Test" inverseName="subjects" inverseEntity="Test" syncable="YES"/>
+        <relationship name="topics" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Topic" inverseName="subjectIBelong" inverseEntity="Topic" syncable="YES"/>
+    </entity>
+    <entity name="Test" representedClassName="Test" syncable="YES">
+        <attribute name="day" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="phase" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="year" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="examIBelong" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Exam" inverseName="tests" inverseEntity="Exam" syncable="YES"/>
+        <relationship name="subjects" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Subject" inverseName="testIBelong" inverseEntity="Subject" syncable="YES"/>
+    </entity>
+    <entity name="Topic" representedClassName="Topic" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="questionsWithin" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Question" inverseName="topicsIBelong" inverseEntity="Question" syncable="YES"/>
+        <relationship name="subjectIBelong" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Subject" inverseName="topics" inverseEntity="Subject" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Exam" positionX="538" positionY="123" width="128" height="75"/>
+        <element name="Question" positionX="601" positionY="549" width="128" height="103"/>
+        <element name="Subject" positionX="27" positionY="216" width="128" height="90"/>
+        <element name="Test" positionX="601" positionY="294" width="128" height="120"/>
+        <element name="Topic" positionX="322" positionY="459" width="128" height="90"/>
+    </elements>
+</model>
